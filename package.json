@@ -1,12 +1,13 @@
 {
-  "name": "smart-india",
+  "name": "quiz-app",
   "version": "1.0.0",
-  "description": "Project for Smart India Hackathon",
+  "description": "Project for V-Tech Coding Event",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon start"
   },
-  "author": "Anurag",
+  "author": "The Musketeers",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.2",
