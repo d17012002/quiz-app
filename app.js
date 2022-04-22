@@ -10,7 +10,7 @@ const findOrCreate = require("mongoose-findorcreate");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 //Database mongoDB
-mongoose.connect("mongodb://localhost:27017/sihDB");
+mongoose.connect("mongodb+srv://webconnect:webconnect123@cluster0.tnchb.mongodb.net/quizappDB");
 
 const questSchema = new mongoose.Schema({
   subject: {
@@ -89,7 +89,6 @@ passport.use(
 
 app.route("/").get((req, res) => {
   res.render("home");
-
 });
 
 app.route("/login").get((req, res) => {
@@ -109,7 +108,8 @@ app.get(
   }
 );
 
-app.route("/addQuestion")
+app
+  .route("/addQuestion")
   .get((req, res) => {
     res.render("addQuestion");
   })
@@ -137,16 +137,42 @@ app.route("/addQuestion")
     }
   });
 
-app.route("/unitQuestion").get((req, res) => {
-  res.render("unitQuestion");
-});
+app.route("/unitQuestion")
+    .get((req, res) => {
+        res.render("unitQuestion");
+  });
+app.route("/biodashboard")
+    .get((req, res) => {
+        res.render("biodashboard");
+  });
+app.route("/chemdashboard")
+    .get((req, res) => {
+        res.render("chemdashboard");
+  });
+app.route("/mathsdashboard")
+    .get((req, res) => {
+        res.render("mathsdashboard");
+  });
+app.route("/phydashboard")
+    .get((req, res) => {
+        res.render("phydashboard");
+  });
+app.route("/studentDashboard")
+    .get((req, res) => {
+        res.render("studentDashboard");
+  });
 
-app.route("/teacherDashboard").get((req, res) => {
-  res.render("teacherDashboard");
-});
+app.route("/teacherDashboard")
+    .get((req, res) => {
+        res.render("teacherDashboard");
+  });
+app.route("/adminLogin")
+    .get((req, res) => {
+        res.render("adminLogin");
+  });
 
 app.route("/auth/google/teacherDashboard").get((req, res) => {
-  res.redirect("/teacherDashboard");
+  res.redirect("/studentDashboard");
 });
 
 app.listen(3000, function () {
