@@ -10,7 +10,9 @@ const findOrCreate = require("mongoose-findorcreate");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 //Database mongoDB
-mongoose.connect("mongodb+srv://webconnect:webconnect123@cluster0.tnchb.mongodb.net/quizappDB");
+mongoose.connect(
+  "mongodb+srv://webconnect:webconnect123@cluster0.tnchb.mongodb.net/quizappDB"
+);
 
 //Database Schemas
 const questSchema = new mongoose.Schema({
@@ -43,8 +45,8 @@ const questSchema = new mongoose.Schema({
 const adminSchema = new mongoose.Schema({
   adminName: String,
   adminEmail: String,
-  adminPass: String
-})
+  adminPass: String,
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -63,43 +65,40 @@ app.use(passport.session());
 
 questSchema.plugin(passportLocalMongoose);
 questSchema.plugin(findOrCreate);
- 
+
 // Databas Model
 const Quest = mongoose.model("Quest", questSchema);
-const Admins = mongoose.model("Admins", adminSchema)
-
+const Admins = mongoose.model("Admins", adminSchema);
 
 //add default admins
 const admin1 = new Admins({
   adminName: "Anurag Singh",
   adminEmail: "anuragkumar2020@vitbhopal.ac.in",
-  adminPass: "anurag123"
-})
+  adminPass: "anurag123",
+});
 const admin2 = new Admins({
   adminName: "Ansh Chauhan",
   adminEmail: "ansh.chauhan2020@vitbhopal.ac.in",
-  adminPass: "ansh123"
-})
+  adminPass: "ansh123",
+});
 const admin3 = new Admins({
   adminName: "Subhransu Majhi",
   adminEmail: "subhransu.majhi2020@vitbhopal.ac.in",
-  adminPass: "subs123"
-})
+  adminPass: "subs123",
+});
 const admin4 = new Admins({
   adminName: "Saksham Gupta",
   adminEmail: "saksham.gupta2020@vitbhopal.ac.in",
-  adminPass: "saksham123"
-})
+  adminPass: "saksham123",
+});
 const admin5 = new Admins({
   adminName: "Devanshu Yadav",
   adminEmail: "devanshu.yadav2020@vitbhopal.ac.in",
-  adminPass: "devanshu123"
-})
+  adminPass: "devanshu123",
+});
 
 //Google Authentication
 passport.use(Quest.createStrategy());
-
-
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);
@@ -128,18 +127,23 @@ passport.use(
   )
 );
 
-
-
 app.route("/").get((req, res) => {
   res.render("home");
   // insert default admins
-  Admins.insertMany([admin1,admin2,admin3,admin4,admin5], function(err){
-    if(err){
-      console.log(err);
-    }else{
-      console.log("Default admins added.")
+  Admins.find(function (err, data) {
+    if (data.length === 0) {
+      Admins.insertMany(
+        [admin1, admin2, admin3, admin4, admin5],
+        function (err) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("Default admins added.");
+          }
+        }
+      );
     }
-  })
+  });
 });
 
 app.route("/login").get((req, res) => {
@@ -187,58 +191,52 @@ app
       res.redirect("/teacherDashboard");
     }
   });
-  
-app.route("/unitQuestion")
-    .get((req, res) => {
-        res.render("unitQuestion");
-  });
-app.route("/biodashboard")
-    .get((req, res) => {
-        res.render("biodashboard");
-  });
-app.route("/chemdashboard")
-    .get((req, res) => {
-        res.render("chemdashboard");
-  });
-app.route("/mathsdashboard")
-    .get((req, res) => {
-        res.render("mathsdashboard");
-  });
-app.route("/phydashboard")
-    .get((req, res) => {
-        res.render("phydashboard");
-  });
-app.route("/studentDashboard")
-    .get((req, res) => {
-        res.render("studentDashboard");
-  });
 
-app.route("/teacherDashboard")
-    .get((req, res) => {
-        res.render("teacherDashboard");
-  });
-app.route("/adminLogin")
-    .get((req, res) => {
-        res.render("adminLogin");
-    })
-    .post((req, res) => {
-      const admin_name = req.body.adminName;
-      const admin_pass = req.body.adminPass;
-      const admin_email = req.body.adminEmail;
-      console.log(admin_name);
-      console.log(admin_pass);
-      console.log(admin_email);
-      Admins.find({adminPass : admin_pass},function(err, data){
-                  if(err){
-                    console.log(err);
-                  }
-                  if(!data.length){
-                    res.send("Error occurred")
-                  }else{
-                    res.redirect("/teacherDashboard");
-                  }
-          })
+app.route("/unitQuestion").get((req, res) => {
+  res.render("unitQuestion");
+});
+app.route("/biodashboard").get((req, res) => {
+  res.render("biodashboard");
+});
+app.route("/chemdashboard").get((req, res) => {
+  res.render("chemdashboard");
+});
+app.route("/mathsdashboard").get((req, res) => {
+  res.render("mathsdashboard");
+});
+app.route("/phydashboard").get((req, res) => {
+  res.render("phydashboard");
+});
+app.route("/studentDashboard").get((req, res) => {
+  res.render("studentDashboard");
+});
+
+app.route("/teacherDashboard").get((req, res) => {
+  res.render("teacherDashboard");
+});
+app
+  .route("/adminLogin")
+  .get((req, res) => {
+    res.render("adminLogin");
+  })
+  .post((req, res) => {
+    const admin_name = req.body.adminName;
+    const admin_pass = req.body.adminPass;
+    const admin_email = req.body.adminEmail;
+    console.log(admin_name);
+    console.log(admin_pass);
+    console.log(admin_email);
+    Admins.find({ adminPass: admin_pass }, function (err, data) {
+      if (err) {
+        console.log(err);
+      }
+      if (!data.length) {
+        res.send("Error occurred");
+      } else {
+        res.redirect("/teacherDashboard");
+      }
     });
+  });
 
 app.route("/auth/google/teacherDashboard").get((req, res) => {
   res.redirect("/studentDashboard");
