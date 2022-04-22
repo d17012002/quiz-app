@@ -1,0 +1,20 @@
+@import url("https://raw.githubusercontent.com/AnmolVerma404/Do-Not-Delete-and-Touch/master/SIH/style.css?token=GHSAT0AAAAAABLLKI2ISD5QEBHSGGYPEZFAYSHXQOQ");
+.input-group{
+    height: 35px;
+}
+.search-qns{
+    height: 34px;
+}
+.search-qns-button{
+    position: relative;
+    top: -13px;
+}
+.fixed-button{
+    display:none;
+}
+.main-menu-background{
+    background-image: url(/public/assets/img/User_Back.jpg);
+}
+.text-Dashboard{
+    color: #000;
+}
