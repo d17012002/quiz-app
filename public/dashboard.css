@@ -18,3 +18,15 @@
 .text-Dashboard{
     color: #000;
 }
+.approve-btn{
+    justify-content: right;
+}
+.approve-btn button{
+    margin-left: 1rem;
+}
+.subject-btn{
+    text-align: center;
+}
+.subject-btn button{
+    margin-left: 1rem;
+}
