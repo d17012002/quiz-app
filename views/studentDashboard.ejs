@@ -222,7 +222,7 @@
                                   </div>
                               </form>
                           </div>
-                          <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">For Teacher</div>
+                          <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">For Students</div>
                           <ul class="pcoded-item pcoded-left-item">
                               <li class="active">
                                   <a  class="waves-effect waves-dark">
@@ -245,38 +245,34 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/"  class="waves-effect waves-dark">
+                                    <span class="pcoded-micon"><img src="assets/SVGs/log-out.svg"/></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Logout</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
                           </ul>
-                          <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Expert</div>
-                          <ul class="pcoded-item pcoded-left-item">
-                              <li>
-                                  <a class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><img class="ti-layers" src="assets/SVGs/check-circle.svg"></img><b>FC</b></span>
-                                      <span class="pcoded-mtext" data-i18n="nav.form-components.main">Verify Question</span>
-                                      <span class="pcoded-mcaret"></span>
-                                  </a>
-                              </li>
-                          </ul>
-                          <ul class="pcoded-item pcoded-left-item">
-                              <li>
-                                  <a href="/"  class="waves-effect waves-dark">
-                                      <span class="pcoded-micon"><img src="assets/SVGs/log-out.svg"/></span>
-                                      <span class="pcoded-mtext" data-i18n="nav.form-components.main">Logout</span>
-                                      <span class="pcoded-mcaret"></span>
-                                  </a>
-                              </li>
-                          </ul>
-                      </div>
+                        </div>
                   </nav>
                   <div class="pcoded-content">
                       <!-- Page-header start -->
                       <div class="page-header">
                           <div class="page-block">
                               <div class="row align-items-center">
-                                  <div class="col-md-8">
+                                  <div class="row-lg-6 col-md-6">
                                       <div class="page-header-title">
                                           <h5 class="m-b-10 text-Dashboard">Dashboard</h5>
                                           <p class="m-b-0 text-Dashboard">Welcome to Crowd Quest</p>
                                       </div>
+                                  </div>
+                                  <div class="row-lg-6 container subject-btn">
+                                    <form action="" method="post">
+                                        <button name="phy" type="button" class="btn btn-outline-primary ">Physics</button>
+                                        <button name="chem" type="button" class="btn btn-outline-primary ">Chemistry</button>
+                                        <button name="maths" type="button" class="btn btn-outline-primary ">Mathematics</button>
+                                        <button name="bio" type="button" class="btn btn-outline-primary ">Biology</button>
+                                    </form>
                                   </div>
                               </div>
                           </div>
@@ -284,10 +280,6 @@
                       <!-- Page-header end -->
                       <div class="pcoded-inner-content">
                           <div class="container subject-btn">
-                            <a href="/phydashboard"> <button type="button" class="btn btn-outline-info ">Physics</button></a>
-                            <a href="/chemdashboard"> <button type="button" class="btn btn-outline-info ">Chemistry</button></a>
-                            <a href="/mathsdashboard"> <button type="button" class="btn btn-outline-info ">Mathematics</button></a>
-                            <a href="/biodashboard"> <button type="button" class="btn btn-outline-info ">Biology</button></a>
                           </div>
                       </div>
                     </div>
