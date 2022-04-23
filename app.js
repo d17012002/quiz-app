@@ -11,35 +11,26 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 //Database mongoDB
 mongoose.connect(
-  "mongodb+srv://webconnect:webconnect123@cluster0.tnchb.mongodb.net/quizappDB"
+  "mongodb://localhost:27017/quizappDB"
 );
 
 //Database Schemas
 const questSchema = new mongoose.Schema({
   subject: {
     type: String,
-    required: [true, "Subject is required"],
   },
   question: {
     type: String,
-    required: [true, "Question is compulsory"],
   },
-  options: {
-    type: [String],
-    required: [true, "Options are compulsory"],
-  },
+  options:  [String],
   ans: {
     type: Number,
-    required: [true, "Ans is required"],
+  
   },
   approve: {
     type: Boolean,
     default: false,
-  },
-  easy: Number,
-  medium: Number,
-  hard: Number,
-  googleId: String,
+  }
 });
 
 const adminSchema = new mongoose.Schema({
@@ -188,25 +179,14 @@ app
 
       newQuestion.save();
       console.log("New question added to the review list database");
-      res.redirect("/teacherDashboard");
+      res.redirect("/addQuestion");
     }
   });
 
 app.route("/unitQuestion").get((req, res) => {
   res.render("unitQuestion");
 });
-app.route("/biodashboard").get((req, res) => {
-  res.render("biodashboard");
-});
-app.route("/chemdashboard").get((req, res) => {
-  res.render("chemdashboard");
-});
-app.route("/mathsdashboard").get((req, res) => {
-  res.render("mathsdashboard");
-});
-app.route("/phydashboard").get((req, res) => {
-  res.render("phydashboard");
-});
+
 app.route("/studentDashboard").get((req, res) => {
   res.render("studentDashboard");
 });
@@ -226,6 +206,8 @@ app
     console.log(admin_name);
     console.log(admin_pass);
     console.log(admin_email);
+    
+    //------------ Need to improve authentication --------------------------------- //
     Admins.find({ adminPass: admin_pass }, function (err, data) {
       if (err) {
         console.log(err);
