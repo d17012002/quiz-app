@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Get Questions</title>
+	<link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+		integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+	<link rel="stylesheet" href="downloadQuestion.css" />
+</head>
+
+<body>
+	<div class="app">
+		<div class="menu-toggle">
+			<div class="hamburger">
+				<span></span>
+			</div>
+		</div>
+
+		<aside class="sidebar">
+			<h3>Menu</h3>
+
+			<nav class="menu">
+				<a href="#" class="menu-item">Home</a>
+				<a href="#" class="menu-item">About</a>
+				<a href="#" class="menu-item">Portfolio</a>
+				<a href="/teacherDashboard" class="menu-item">Dashboard</a>
+			</nav>
+
+		</aside>
+
+		<main class="content">
+			<h1>Welcome, Human</h1>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, explicabo!</p>
+			<div class="container h-50 my-5" data-aos="fade-down">
+				<div class="card">
+					<div class="card-header">
+						WEEK 4 and WEEK 5 - (7<sup>th </sup> Mar - 21<sup>st </sup> Mar):
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">Accomplished</h5>
+						<p class="card-text">Completed blog page and leaderboard made it fully responsive. Also, fixed
+							some bugs
+							and started working on
+							team page. <br>
+							*Contribution made by each team member is equal and fair.</p>
+						<h5 class="card-title">Next Week Agenda</h5>
+						<p class="card-text">Completing team page making it fully responsive. Also, start working on new
+							event
+							web page and putting
+							real content on website.</p>
+						</div>
+					</div>
+				</div>
+			<a href="#" class="btn btn-primary" download>Download </a>
+		</main>
+	</div>
+	<script>
+		const menu_toggle = document.querySelector('.menu-toggle');
+		const sidebar = document.querySelector('.sidebar');
+
+		menu_toggle.addEventListener('click', () => {
+			menu_toggle.classList.toggle('is-active');
+			sidebar.classList.toggle('is-active');
+		});
+	</script>
+</body>
+
+</html>
